@@ -15,6 +15,15 @@ const C = {
 };
 const cyanA = (a: number) => `rgba(0, 240, 255, ${a})`;
 
+/* Corner brackets: no undefined style values (satori calls .trim() on every value) */
+const BRACKET = `2px solid ${cyanA(0.7)}`;
+const CORNERS: Record<string, string | number>[] = [
+  { top: 24, left: 24, borderTop: BRACKET, borderLeft: BRACKET },
+  { top: 24, right: 24, borderTop: BRACKET, borderRight: BRACKET },
+  { bottom: 24, left: 24, borderBottom: BRACKET, borderLeft: BRACKET },
+  { bottom: 24, right: 24, borderBottom: BRACKET, borderRight: BRACKET },
+];
+
 /* ---------- radar geometry (SVG viewBox 400x400, center 200,200) ---------- */
 const CX = 200;
 const CY = 200;
@@ -97,30 +106,17 @@ export default async function Image() {
       </svg>
 
       {/* Corner brackets */}
-      {[
-        { top: 24, left: 24, borderTop: true, borderLeft: true },
-        { top: 24, right: 24, borderTop: true, borderRight: true },
-        { bottom: 24, left: 24, borderBottom: true, borderLeft: true },
-        { bottom: 24, right: 24, borderBottom: true, borderRight: true },
-      ].map((b, i) => {
-        const { borderTop, borderLeft, borderRight, borderBottom, ...pos } = b;
-        const line = `2px solid ${cyanA(0.7)}`;
-        return (
-          <div
-            key={i}
-            style={{
-              position: "absolute",
-              width: 34,
-              height: 34,
-              ...pos,
-              borderTop: borderTop ? line : undefined,
-              borderLeft: borderLeft ? line : undefined,
-              borderRight: borderRight ? line : undefined,
-              borderBottom: borderBottom ? line : undefined,
-            }}
-          />
-        );
-      })}
+      {CORNERS.map((corner, i) => (
+        <div
+          key={i}
+          style={{
+            position: "absolute",
+            width: 34,
+            height: 34,
+            ...corner,
+          }}
+        />
+      ))}
 
       {/* Content */}
       <div
@@ -172,7 +168,7 @@ export default async function Image() {
                 fontWeight: 700,
               }}
             >
-              FICTIONAL INTERFACE // ENTERTAINMENT &amp; EDUCATION
+              {"FICTIONAL INTERFACE // ENTERTAINMENT & EDUCATION"}
             </span>
           </div>
 
@@ -262,8 +258,9 @@ export default async function Image() {
                 letterSpacing: 1,
               }}
             >
-              Your location, network &amp; device — scanned through a cinematic
-              command-center interface.
+              {
+                "Your location, network & device — scanned through a cinematic command-center interface."
+              }
             </div>
 
             <div
