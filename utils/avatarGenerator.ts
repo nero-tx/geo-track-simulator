@@ -161,10 +161,6 @@ export function generateOperatorProfile(rawName: string): OperatorProfile {
   <circle cx="51" cy="35.5" r="1" fill="${palette.secondary}"/>
   <circle cx="69" cy="35.5" r="1" fill="${palette.secondary}"/>
 
-  <!-- Tactical HUD Text Overlay -->
-  <text x="6" y="14" fill="${palette.primary}" font-family="monospace" font-size="5" letter-spacing="1">OPR//${agentId.slice(0, 8)}</text>
-  <text x="6" y="114" fill="${palette.secondary}" font-family="monospace" font-size="4.5">CLR:${clearance.slice(0, 10)}</text>
-  <text x="75" y="114" fill="${palette.primary}" font-family="monospace" font-size="4.5" text-anchor="end">SYS:NOMINAL</text>
 
   <!-- Corner Brackets -->
   <path d="M 6 12 L 6 6 L 12 6" fill="none" stroke="${palette.primary}" stroke-width="1.2"/>
