@@ -7,10 +7,11 @@ import { GeoData } from "@/utils/types";
 export default function DevicePanel({ data }: { data: GeoData }) {
   return (
     <div className="tactical-panel reveal">
-      <div className="flex items-center justify-between px-3 py-2 border-b border-cyan-500/20 bg-[#07101f]">
-        <PanelHeader label="DEVICE &amp; HARDWARE FINGERPRINT" />
-        <span className="text-[10px] text-cyan-400/60 font-mono">
-          FINGERPRINT MATRIX: UNIQUE
+      <div className="flex items-center justify-between p-3 border-b border-nexus-cyan-border bg-panel">
+        <PanelHeader label="Device Intelligence (Hardware)" />
+
+        <span className="hidden sm:inline-block text-xs text-cyan-400/60 font-mono">
+          Device Signature // Identified
         </span>
       </div>
 

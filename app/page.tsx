@@ -235,7 +235,7 @@ export default function Home() {
         {data && (
           <div className="space-y-5 reveal">
             {/* Navigation Tabs for Hollywood Spy Command Experience */}
-            <div className="flex flex-wrap items-center gap-2 border-b border-cyan-500/20 pb-2">
+            <div className="flex flex-wrap items-center gap-2 border-b border-nexus-cyan-border pb-2">
               {[
                 {
                   id: "tactical_map",
@@ -320,9 +320,9 @@ export default function Home() {
 
             {/* Quick Access Grid for Complete Operational Overview */}
             {activeTab === "tactical_map" && (
-              <div className="pt-2 border-t border-cyan-500/15">
-                <div className="text-[10px] text-cyan-400/50 font-mono tracking-widest mb-3">
-                  SECONDARY TELEMETRY TILES:
+              <div className="pt-2 border-t border-nexus-cyan-border">
+                <div className="text-xs text-nexus-cyan-dim font-mono tracking-widest mb-3">
+                  Additional Telemetry Metrics:
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <GPSPanel data={data} />

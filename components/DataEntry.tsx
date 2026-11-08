@@ -7,15 +7,24 @@ interface DataEntryProps {
   dim?: boolean;
 }
 
-export default function DataEntry({ label, value, highlight, dim }: DataEntryProps) {
-  const valueColor = highlight ? "text-amber-400 font-bold" : dim ? "text-cyan-400/50" : "text-cyan-300";
+export default function DataEntry({
+  label,
+  value,
+  highlight,
+  dim,
+}: DataEntryProps) {
+  const valueColor = highlight
+    ? "text-nexus-amber font-bold"
+    : dim
+      ? "text-nexus-emerald"
+      : "text-nexus-cyan";
 
   return (
-    <div className="flex flex-col gap-0.5 py-1.5 border-b border-cyan-500/10 font-mono">
-      <span className="text-[10px] tracking-[1.5px] uppercase text-cyan-400/40">
+    <div className="flex flex-col gap-0.5 py-1.5 border-b border-cyan-500/10 font-ubuntu">
+      <span className="text-[15px] tracking-[1.5px] capitalize text-nexus-cyan-dim">
         {label}
       </span>
-      <span className={`text-[12px] tracking-[0.5px] truncate ${valueColor}`}>
+      <span className={`text-sm tracking-[0.5px] truncate ${valueColor}`}>
         {value || "UNRECORDED"}
       </span>
     </div>

@@ -8,34 +8,39 @@ import { MapPin } from "lucide-react";
 export default function LocationPanel({ data }: { data: GeoData }) {
   return (
     <div className="tactical-panel reveal" style={{ gridColumn: "1 / -1" }}>
-      <div className="flex items-center justify-between px-3 py-2 border-b border-cyan-500/20 bg-[#07101f]">
-        <PanelHeader label="GEOLOCATION INTELLIGENCE // EXACT PHYSICAL TARGETING" />
-        <span className="text-[10px] text-cyan-400/70 font-mono">
-          NOMINATIM REVERSE RESOLUTION: OK
+      <div className="flex items-center justify-between p-3 border-b border-cyan-500/20 bg-panel">
+        <PanelHeader label="Geospatial Intelligence" />
+
+        <span className="hidden sm:inline-block text-xs text-nexus-cyan-border font-mono">
+          Address Resolution // Operational
         </span>
       </div>
 
       <div className="p-3">
         {/* Full Street Address Banner */}
-        <div className="p-3 mb-3 bg-[#03060c] border border-cyan-500/30 font-mono">
-          <div className="flex items-center gap-1.5 text-cyan-400 text-[10px] tracking-widest mb-1">
-            <MapPin className="w-3.5 h-3.5 text-cyan-400" />
+        <div className="p-3 mb-3 bg-core border border-nexus-cyan-border font-mono">
+          <div className="flex items-center gap-1.5 text-nexus-cyan text-xs tracking-widest mb-1">
+            <MapPin className="size-4 shrink-0 text-cyan-400" />
             <span>EXACT PHYSICAL STREET ADDRESS:</span>
           </div>
-          <div className="text-white text-sm md:text-base font-bold tracking-wide">
+          <div className="text-white text-sm md:text-base font-bold tracking-wide mt-2">
             {data.exactAddress.formattedAddress}
           </div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 stagger font-mono">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 stagger font-ubuntu">
           <DataEntry
             label="Street / Road"
-            value={data.exactAddress.road || data.exactAddress.neighborhood || "--"}
+            value={
+              data.exactAddress.road || data.exactAddress.neighborhood || "--"
+            }
             highlight
           />
           <DataEntry
             label="District / Suburb"
-            value={data.exactAddress.suburb || data.exactAddress.county || data.city}
+            value={
+              data.exactAddress.suburb || data.exactAddress.county || data.city
+            }
           />
           <DataEntry
             label="City / Municipality"
@@ -55,15 +60,8 @@ export default function LocationPanel({ data }: { data: GeoData }) {
             value={`${data.country} [${data.countryCode}]`}
             highlight
           />
-          <DataEntry
-            label="Timezone Offset"
-            value={data.timezone}
-          />
-          <DataEntry
-            label="National Currency"
-            value={data.currency}
-            dim
-          />
+          <DataEntry label="Timezone Offset" value={data.timezone} />
+          <DataEntry label="National Currency" value={data.currency} dim />
         </div>
       </div>
     </div>

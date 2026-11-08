@@ -42,7 +42,7 @@ export default function MissionBrief() {
     <div className="tactical-panel font-ubuntu">
       <div className="flex items-center justify-between p-3 border-b border-nexus-cyan-border bg-panel">
         <PanelHeader label="Operational Intelligence || Field Recon" />
-        <span className="text-xs text-nexus-amber font-bold">
+        <span className="hidden sm:inline-block text-xs text-nexus-amber font-bold">
           Restricted // Level 04
         </span>
       </div>

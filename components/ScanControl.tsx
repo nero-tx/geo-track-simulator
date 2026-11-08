@@ -46,7 +46,7 @@ export default function ScanControl({
     <div className="tactical-panel">
       <div className="flex items-center justify-between p-3 border-b border-nexus-cyan-border bg-panel">
         <PanelHeader label="Target Acquisition || Initialization" />
-        <span className="text-[10px] text-cyan-400/60 font-mono">
+        <span className="hidden sm:inline-block text-xs text-cyan-400/60 font-mono">
           Protocol 94 // Geospatial
         </span>
       </div>
