@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "PALANTIR GOTHAM // OMNI-SURVEILLANCE COMMAND";
+export const alt = "NEXUS-GEO";
 export const size = {
   width: 1200,
   height: 630,

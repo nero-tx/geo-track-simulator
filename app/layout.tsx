@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const viewport: Viewport = {
   themeColor: "#040810",
@@ -9,8 +11,8 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://nexus-tracker.defense.local"),
-  title: "PALANTIR GOTHAM // OMNI-SURVEILLANCE COMMAND",
+  metadataBase: "https://geo-track-simulator.vercel.app/",
+  title: "NEXUS GEO-TRACK",
   description:
     "Classified Global Geolocation, Orbital Space Recon & Real-Time Atmospheric Intelligence Console",
   keywords: [
@@ -24,27 +26,24 @@ export const metadata: Metadata = {
     "Blackbriar",
   ],
   icons: {
-    icon: [
-      { url: "/icon.svg", type: "image/svg+xml" },
-      { url: "/favicon.ico" },
-    ],
+    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
     shortcut: "/icon.svg",
     apple: "/icon.svg",
   },
   openGraph: {
-    title: "PALANTIR GOTHAM // OMNI-SURVEILLANCE COMMAND",
+    title: "NEXUS GEO-TRACK",
     description:
       "Classified Global Geolocation, Orbital Space Recon & Real-Time Atmospheric Intelligence Console",
-    siteName: "PALANTIR GOTHAM",
+    siteName: "NEXUS",
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "PALANTIR GOTHAM // OMNI-SURVEILLANCE COMMAND",
+    title: "NEXUS GEO-TRACK",
     description:
       "Classified Global Geolocation, Orbital Space Recon & Real-Time Atmospheric Intelligence Console",
-    creator: "@OMNI_COMMAND",
+    creator: "@GEO_LOC",
   },
 };
 
@@ -58,6 +57,9 @@ export default function RootLayout({
       <body className="crt-flicker bg-[#040810] text-[#00f0ff]">
         <div className="scanlines" />
         {children}
+
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
