@@ -209,6 +209,7 @@ export default function Home() {
         isOpen={showOperatorModal}
         onSave={handleSaveOperator}
         initialName={operator?.username || ""}
+        setOpen={setShowOperatorModal}
       />
 
       {/* Top Palantir / CIA Operator Control Header */}
@@ -223,7 +224,7 @@ export default function Home() {
       <StatusBar />
 
       {/* Main Tactical Dashboard Container */}
-      <main className="max-w-430 mx-auto p-3 sm:p-5 space-y-5">
+      <main className="max-w-full mx-auto p-3 sm:p-5 space-y-5">
         {/* Top Control Grid: Directive Brief & Target Authorization */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <MissionBrief />
