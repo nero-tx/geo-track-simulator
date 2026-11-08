@@ -1,26 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@500;600;700&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-core: #040810;
+  --bg-panel: #070e1c;
+  --bg-panel-elevated: #0c172d;
+  --bg-glass: rgba(7, 14, 28, 0.85);
+
+  --palantir-cyan: #00f0ff;
+  --palantir-cyan-dim: rgba(0, 240, 255, 0.55);
+  --palantir-cyan-ghost: rgba(0, 240, 255, 0.08);
+  --palantir-cyan-border: rgba(0, 240, 255, 0.22);
+
+  --palantir-emerald: #00ff88;
+  --palantir-amber: #ffaa00;
+  --palantir-crimson: #ff3355;
+  --palantir-violet: #8a63ff;
+
+  --font-mono: 'Share Tech Mono', monospace;
+  --font-hud: 'Orbitron', monospace;
+  --font-data: 'Rajdhani', sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html, body {
+  background: var(--bg-core);
+  color: var(--palantir-cyan);
+  font-family: var(--font-mono);
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Custom Tactical Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #040810;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 240, 255, 0.25);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 240, 255, 0.5);
+}
+
+/* Scanlines and CRT effects */
+.scanlines {
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.2) 2px,
+    rgba(0, 0, 0, 0.2) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.crt-flicker {
+  animation: flicker 12s infinite;
+}
+@keyframes flicker {
+  0%, 95%, 100% { opacity: 1; }
+  96% { opacity: 0.94; }
+  97% { opacity: 1; }
+  98% { opacity: 0.97; }
+}
+
+/* Subtle Tactical Grid Background */
+.tactical-grid-bg {
+  background-image: 
+    linear-gradient(to right, rgba(0, 240, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 240, 255, 0.035) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Corner bracket panel decoration */
+.tactical-panel {
+  position: relative;
+  background: var(--bg-panel);
+  border: 1px solid var(--palantir-cyan-border);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(0, 240, 255, 0.02);
+}
+
+.tactical-panel::before,
+.tactical-panel::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-color: var(--palantir-cyan);
+  border-style: solid;
+  pointer-events: none;
+}
+.tactical-panel::before {
+  top: -1px;
+  left: -1px;
+  border-width: 2px 0 0 2px;
+}
+.tactical-panel::after {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 2px 2px 0;
+}
+
+/* Radar Sweep Animation */
+.radar-sweep {
+  animation: radarRotate 4s linear infinite;
+  transform-origin: center center;
+}
+@keyframes radarRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Blinking & Pulses */
+.blink {
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.pulse-dot {
+  animation: pulseDot 2s ease-in-out infinite;
+}
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.85); }
+}
+
+.target-ping {
+  animation: targetPing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+@keyframes targetPing {
+  0% { transform: scale(0.8); opacity: 1; box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.8); }
+  70% { transform: scale(2.2); opacity: 0; box-shadow: 0 0 0 20px rgba(0, 240, 255, 0); }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+/* Button sweep effect */
+.btn-tactical {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s ease;
+  font-family: var(--font-hud);
+}
+.btn-tactical::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--palantir-cyan);
+  transform: translateX(-101%);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 0;
+}
+.btn-tactical:hover::before {
+  transform: translateX(0);
+}
+.btn-tactical:hover {
+  color: #040810;
+  box-shadow: 0 0 16px rgba(0, 240, 255, 0.5);
+}
+.btn-tactical > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Animations */
+.reveal {
+  animation: revealUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes revealUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Map Dark Filter */
+.map-dark {
+  filter: invert(0.92) hue-rotate(185deg) contrast(1.2) brightness(0.7) saturate(1.4);
 }
