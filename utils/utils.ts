@@ -125,7 +125,7 @@ export function getCurrentLocation(): Promise<{
           speed: position.coords.speed,
         });
 
-        console.log(position)
+        console.log(position);
       },
       (error) => {
         reject(new Error(error.message));
@@ -450,7 +450,7 @@ export function calculateSpaceTelemetry(
   const satellites: OrbitalSatellite[] = [
     {
       id: "USA-224",
-      name: "USA-224 (KH-11 KENNEN SPY SAT)",
+      name: "USA-224 (KH-11 Kennen)",
       type: "RECON_OPTICAL",
       noradId: 37348,
       altitudeKm: 265,
@@ -463,7 +463,7 @@ export function calculateSpaceTelemetry(
     },
     {
       id: "USA-245",
-      name: "USA-245 (KEYHOLE-11 ADVANCED)",
+      name: "USA-245 (Keyhole Reconnaissance)",
       type: "RECON_OPTICAL",
       noradId: 39232,
       altitudeKm: 390,
@@ -476,7 +476,7 @@ export function calculateSpaceTelemetry(
     },
     {
       id: "ISS-ZARYA",
-      name: "INTERNATIONAL SPACE STATION (ISS)",
+      name: "International Space Station (ISS)",
       type: "SPACE_STATION",
       noradId: 25544,
       altitudeKm: 418,
@@ -489,7 +489,7 @@ export function calculateSpaceTelemetry(
     },
     {
       id: "COSMOS-2558",
-      name: "COSMOS-2558 (INSPECTOR ORBITAL)",
+      name: "Cosmos-2558 (Orbital Inspector)",
       type: "SIGINT_SURVEILLANCE",
       noradId: 53323,
       altitudeKm: 435,
@@ -502,7 +502,7 @@ export function calculateSpaceTelemetry(
     },
     {
       id: "SAR-LUPE-3",
-      name: "SAR-LUPE 3 (SYNTHETIC APERTURE RADAR)",
+      name: "SAR-Lupe 3 (Synthetic Aperture Radar)",
       type: "RADAR_IMAGERY",
       noradId: 32258,
       altitudeKm: 495,
@@ -516,14 +516,14 @@ export function calculateSpaceTelemetry(
   ];
 
   const moonPhases = [
-    "NEW MOON // ZERO ILLUMINATION",
-    "WAXING CRESCENT // 25%",
-    "FIRST QUARTER // 50%",
-    "WAXING GIBBOUS // 75%",
-    "FULL MOON // MAXIMUM OPTICAL REFLECTION",
-    "WANING GIBBOUS // 75%",
-    "LAST QUARTER // 50%",
-    "WANING CRESCENT // 25%",
+    "New Moon (0% Illumination)",
+    "Waxing Crescent (25% Illumination)",
+    "First Quarter (50% Illumination)",
+    "Waxing Gibbous (75% Illumination)",
+    "Full Moon (100% Illumination)",
+    "Waning Gibbous (75% Illumination)",
+    "Last Quarter (50% Illumination)",
+    "Waning Crescent (25% Illumination)",
   ];
   const moonPhase = moonPhases[(dayOfYear % 29) % moonPhases.length];
 
